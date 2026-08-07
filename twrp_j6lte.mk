@@ -14,10 +14,19 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-     $(LOCAL_DIR)/twrp_j6lte.mk
+$(call inherit-product, build/target/product/embedded.mk)
 
-COMMON_LUNCH_CHOICES := \
-    twrp_j6lte-user \
-    twrp_j6lte-userdebug \
-    twrp_j6lte-eng
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
+
+PRODUCT_PACKAGES += \
+	charger_res_images \
+	charger
+
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := j6lte
+PRODUCT_NAME := twrp_j6lte
+PRODUCT_BRAND := samsung
+PRODUCT_MODEL := Galaxy J6
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_RELEASE_NAME := Samsung Galaxy J6 2018
